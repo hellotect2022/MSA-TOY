@@ -49,6 +49,14 @@
 			<version>3.0.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- 웹 템플릿 엔진 -->
+		<!-- 1. jsp -->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.tomcat.embed</groupId>-->
+<!--			<artifactId>tomcat-embed-jasper</artifactId>-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
