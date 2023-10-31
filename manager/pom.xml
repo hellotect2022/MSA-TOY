@@ -50,6 +50,8 @@
 			<scope>test</scope>
 		</dependency>
 
+
+
 		<!-- 웹 템플릿 엔진 -->
 		<!-- 1. jsp -->
 <!--		<dependency>-->
@@ -57,6 +59,12 @@
 <!--			<artifactId>tomcat-embed-jasper</artifactId>-->
 <!--			<scope>provided</scope>-->
 <!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mustache -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mustache</artifactId>
+			<version>3.1.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
