@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>File Upload</title>
@@ -11,5 +11,13 @@
     <input type="file" id="file" name="file" required><br><br>
     <button type="submit">Upload</button>
 </form>
+<h1>파일 다운로드</h1>
+<form action="/filedownload" method="post" accept-charset="UTF-8">
+    <label for="fileName">파일명:</label>
+    <input type="text" id="fileName" name="fileName" required>
+    <button type="submit">다운로드</button>
+</form>
+
+
 </body>
 </html>
