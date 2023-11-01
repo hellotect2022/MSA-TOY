@@ -36,4 +36,12 @@ public class HomeController {
         model.addAttribute("user",first);
         return "home/hello";
     }
+    @GetMapping("/home/file.do")
+    public String monitor_file(Model model){
+        int one =0;
+//        List<TestDTO> testUsers = testService.getTestUser();
+//        TestDTO first = testUsers.get(0);
+//        model.addAttribute("user",first);
+        return "home/file";
+    }
 }
