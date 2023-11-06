@@ -1,0 +1,16 @@
+<div class="menu-wrap">
+    <ul id="tree">
+        {{#menus}}
+            <li>
+                <span>{{menuName}}</span>
+                {{#subMenus}}
+                    <ul>
+                        {{#subMenu}}
+                            <li><a href="{{linkUrl}}" id="{{menuId}}">{{menuName}}</a></li>
+                        {{/subMenu}}
+                    </ul>
+                {{/subMenus}}
+            </li>
+        {{/menus}}
+    </ul>
+</div>

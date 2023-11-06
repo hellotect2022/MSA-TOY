@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="db.xml.user">
+
+    <select id="getUser" resultType="com.msa.manager.dto.UserDTO">
+        SELECT	IDX			as	userId		,
+        NICK_NAME		as	nickName	,
+        USER_TYPE		as	userType	,
+        EMAIL			as	email
+        FROM	`METABUS`.`META_USER_TB`
+        WHERE	EMAIL		=	#{email}
+        AND		PASSWORD	=	#{password}
+    </select>
+</mapper>
