@@ -37,8 +37,8 @@ public class LoginApiController {
             int result = userService.userLogin(userDTO);
             logger.debug("userLogin match user num::::"+result);
             if (result != 1){
-                HttpSession session = request.getSession();
-                session.setAttribute("user",userDTO);
+//                HttpSession session = request.getSession();
+//                session.setAttribute("user",userDTO);
                 return new Response(new ApiException(500,"사용자가 없음"));
             }
         }catch (Exception e){

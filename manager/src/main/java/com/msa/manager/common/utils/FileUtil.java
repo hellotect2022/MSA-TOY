@@ -1,11 +1,14 @@
 package com.msa.manager.common.utils;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,6 +17,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
 
@@ -69,6 +75,26 @@ public class FileUtil {
                 .contentLength(file.length())
                 .contentType(MediaType.parseMediaType(contentType))
                 .body(resource);
+    }
+
+    public static ResponseEntity<byte[]> zipAndDownloadFiles(List<Resource> files) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (ZipOutputStream zos = new ZipOutputStream(baos)) {
+            for (Resource file : files) {
+                zos.putNextEntry(new ZipEntry(file.getFilename()));
+                IOUtils.copy(file.getInputStream(), zos);
+                zos.closeEntry();
+            }
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename=files.zip");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(baos.size())
+                .contentType(MediaType.parseMediaType("application/zip"))
+                .body(baos.toByteArray());
     }
 }
 

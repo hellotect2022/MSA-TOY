@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="db.xml.menu">
+
+    <select id="getMenus" resultType="com.msa.manager.dto.MenuDTO">
+        SELECT	MENU_ID			AS	menuId,
+        DEPTH			AS	depth,
+        SEQ				AS	seq,
+        PARENT_MENU_ID	AS	parentMenuId,
+        MENU_NAME		AS	menuName,
+        LINK_URL		AS	linkUrl
+        FROM	`METABUS`.`META_MENU_TB`
+        ORDER BY	DEPTH, SEQ
+    </select>
+</mapper>
