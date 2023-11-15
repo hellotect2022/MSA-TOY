@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @Controller
 @EnableAutoConfiguration
+@RequestMapping("/testapi")
 public class TestApiController {
 
     @RequestMapping("/hello")

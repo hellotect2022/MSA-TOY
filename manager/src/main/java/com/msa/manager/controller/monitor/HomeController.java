@@ -17,6 +17,7 @@ import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
+@RequestMapping("/home")
 public class HomeController {
 
 //    @GetMapping("/home/login.do")
@@ -28,7 +29,7 @@ public class HomeController {
 
     @Autowired
     TestService testService;
-    @GetMapping("/home/hello.do")
+    @GetMapping("/hello.do")
     public String monitor_hello(Model model){
         int one =0;
         List<TestDTO> testUsers = testService.getTestUser();
@@ -36,7 +37,7 @@ public class HomeController {
         model.addAttribute("user",first);
         return "home/hello";
     }
-    @GetMapping("/home/file.do")
+    @GetMapping("/file.do")
     public String monitor_file(Model model){
         int one =0;
 //        List<TestDTO> testUsers = testService.getTestUser();
