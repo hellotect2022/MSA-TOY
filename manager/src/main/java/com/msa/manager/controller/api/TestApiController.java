@@ -1,6 +1,10 @@
 package com.msa.manager.controller.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.msa.manager.common.utils.FileUtil;
+import com.msa.manager.dto.CvUserDTO;
+import com.msa.manager.service.CvUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,11 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/testapi")
 public class TestApiController {
+
+    @Autowired
+    CvUserService cvUserService;
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -36,4 +44,15 @@ public class TestApiController {
         ResponseEntity result = FileUtil.fileDownload(filePath);
         return result;
     }
+
+//    @RequestMapping("/getUsers")
+//    @ResponseBody
+//    public String getAllUsers() throws IOException {
+//        List<CvUserDTO> result = cvUserService.getCvUser();
+//
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.writeValueAsString(result);
+//
+//        return objectMapper.writeValueAsString(result);
+//    }
 }

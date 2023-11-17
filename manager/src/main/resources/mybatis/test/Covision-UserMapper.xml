@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="covision.xml.user">
+    <select id="getCvUser" resultType="com.msa.manager.dto.CvUserDTO">
+        Select * FROM users
+    </select>
+
+    <select id="userLogin" resultType="com.msa.manager.dto.CvUserDTO">
+        Select
+            user_id AS userId,
+            password
+        FROM users
+        WHERE user_id = #{userId}
+    </select>
+</mapper>

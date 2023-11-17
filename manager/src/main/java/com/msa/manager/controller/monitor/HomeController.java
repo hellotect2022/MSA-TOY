@@ -27,6 +27,11 @@ public class HomeController {
 //        return mav;
 //    }
 
+    @GetMapping("/login.do")
+    public String home() {
+        return "covision/login";
+    }
+
     @Autowired
     TestService testService;
     @GetMapping("/hello.do")

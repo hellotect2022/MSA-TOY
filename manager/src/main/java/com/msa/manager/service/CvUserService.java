@@ -11,13 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TestService {
-    @Autowired
-    TestDAO testDAO;  // dao 를 연결하는 방식
+public class CvUserService {
+    @Resource(name="sqlSessionTemplateDB1")
+    private SqlSession session;
 
-    public List<TestDTO> getTestUser(){
-        int a =1;
-        return testDAO.getTestUsers();
-    };
+    public List<CvUserDTO> getCvUser(){
+        return session.selectList("covision.xml.user.getCvUser");
+    }
 
+    public CvUserDTO userLogin(CvUserDTO cvUserDTO){
+        return session.selectOne("covision.xml.user.userLogin",cvUserDTO);
+    }
 }
