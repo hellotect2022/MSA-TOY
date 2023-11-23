@@ -6,10 +6,11 @@
         Select * FROM users
     </select>
 
-    <select id="userLogin" resultType="com.msa.manager.dto.CvUserDTO">
+    <select id="userCheck" resultType="com.msa.manager.dto.CvUserDTO">
         Select
             user_id AS userId,
-            password
+            password,
+            is_use AS isUse
         FROM users
         WHERE user_id = #{userId}
     </select>

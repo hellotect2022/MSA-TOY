@@ -1,15 +1,19 @@
 package com.msa.manager.controller.api;
+
 import com.msa.manager.common.utils.ErrorCode;
 import com.msa.manager.common.utils.RequestStatus;
 import com.msa.manager.dto.CvUserDTO;
 import com.msa.manager.dto.Response.Response;
 import com.msa.manager.service.CvUserService;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,19 +22,18 @@ import java.util.logging.Logger;
 @EnableAutoConfiguration
 @Controller
 @RequestMapping("/api")
-public class LoginController {
+public class RegistController {
+    //private static final Logger logger = Logger.getLogger(RegistController.class.getName());
 
     @Autowired
     CvUserService cvUserService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/regist", method = RequestMethod.POST)
     @ResponseBody
     public Response loginCheck(@RequestBody CvUserDTO cvUserDTO) throws IOException {
         Response response = new Response();
-        // 사용자 요청
-        log.debug("login",cvUserDTO);
-        // 사용자체크
-
+        //1. 사용자 체크
+        log.debug("test",cvUserDTO);
         CvUserDTO user = cvUserService.userLogin(cvUserDTO);
 
         if (user == null){
@@ -48,13 +51,5 @@ public class LoginController {
 
         return response;
     }
-
-    private void checkUserValidation(){
-        // E1101(1001,"없는 사용자 입니다.")
-        // E1102(1002,"탈퇴 한 사용자 입니다."),
-        // E1103(1003,"제한된 사용자 입니다. (pw 횟수초과)"),
-        // E1104(1004,"비밀번호가 맞지 않습니다.");
-    }
-
 
 }

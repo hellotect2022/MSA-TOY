@@ -16,18 +16,18 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-@Controller
 @EnableAutoConfiguration
-@RequestMapping("/testapi")
+@Controller
+@RequestMapping("/test")
 public class TestApiController {
 
     @Autowired
     CvUserService cvUserService;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/check")
     @ResponseBody
     public String home() {
-        return "Hello World!";
+        return "Hello Nice to meet you";
     }
 
     @RequestMapping("/fileupload")
