@@ -31,30 +31,33 @@ public class LoginController {
         log.debug("login",cvUserDTO);
         // 사용자체크
 
-        CvUserDTO user = cvUserService.userLogin(cvUserDTO);
+        CvUserDTO user = cvUserService.userCheck(cvUserDTO);
 
         if (user == null){
-            response.setHeader(RequestStatus.ERROR, ErrorCode.E1004.getErrorCode(),ErrorCode.E1004.getErrorMessage());
+            // E1101(1101,"없는 사용자 입니다.")
+            response.setHeader(RequestStatus.ERROR, ErrorCode.E1101);
+            return response;
+        }else if (user.getIsUse() != 1) {
+            // E1102(1102,"탈퇴 한 사용자 입니다."),
+            response.setHeader(RequestStatus.ERROR, ErrorCode.E1102);
+            return response;
+        }else if (user.getIsLock() != 0) {
+            // E1103(1103,"제한된 사용자 입니다. (pw 횟수초과)"),
+            response.setHeader(RequestStatus.ERROR, ErrorCode.E1103);
+            return response;
+        }else if (!cvUserDTO.getPassword().equals(user.getPassword())) {
+            // E1104(1104,"비밀번호가 맞지 않습니다.");
+            response.setHeader(RequestStatus.ERROR, ErrorCode.E1104);
             return response;
         }
-
-        if (cvUserDTO.getPassword().equals(user.getPassword())){
-            response.setHeader(RequestStatus.ERROR, ErrorCode.E1004.getErrorCode(),ErrorCode.E1004.getErrorMessage());
-        }else{
-            response.setHeader(RequestStatus.ERROR, ErrorCode.E1004.getErrorCode(),ErrorCode.E1004.getErrorMessage());
-        }
+        // jwt 토큰을 적어서 넘겨준다.
 
 
 
         return response;
     }
 
-    private void checkUserValidation(){
-        // E1101(1001,"없는 사용자 입니다.")
-        // E1102(1002,"탈퇴 한 사용자 입니다."),
-        // E1103(1003,"제한된 사용자 입니다. (pw 횟수초과)"),
-        // E1104(1004,"비밀번호가 맞지 않습니다.");
-    }
+
 
 
 }

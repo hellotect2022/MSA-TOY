@@ -14,6 +14,7 @@ public class CvUserDTO {
     private String createdAt;
     private String updatedAt;
     private String expired;
+    private int isLock;
 
 
 }

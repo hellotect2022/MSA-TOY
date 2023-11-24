@@ -121,6 +121,11 @@
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
+            if (data.header.status == "SUCCESS"){
+
+            }else {
+                alert(`[${data.header.status}]\n${data.header.message}`);
+            }
             // 성공적으로 요청을 처리한 후의 동작을 추가할 수 있습니다.
         })
         .catch((error) => {

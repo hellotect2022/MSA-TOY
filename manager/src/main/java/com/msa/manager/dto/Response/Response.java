@@ -17,8 +17,8 @@ public class Response<T> {
         this.body = body;
     }
 
-    public void setHeader(RequestStatus status, int errorCode, String message){
-        this.header = new Header(status,errorCode,message);
+    public void setHeader(RequestStatus status, ErrorCode errorCode){
+        this.header = new Header(status,errorCode);
     }
 
 }
@@ -28,5 +28,11 @@ class Header {
     RequestStatus status;
     int errorCode;
     String message;
+
+    Header(RequestStatus status, ErrorCode erroCode){
+        this.status = status;
+        this.errorCode = erroCode.getErrorCode();
+        this.message = erroCode.getErrorMessage();
+    }
 }
 

@@ -10,7 +10,8 @@
         Select
             user_id AS userId,
             password,
-            is_use AS isUse
+            is_use AS isUse,
+            is_lock AS isLock
         FROM users
         WHERE user_id = #{userId}
     </select>

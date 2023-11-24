@@ -19,7 +19,7 @@ public class CvUserService {
         return session.selectList("covision.xml.user.getCvUser");
     }
 
-    public CvUserDTO userLogin(CvUserDTO cvUserDTO){
-        return session.selectOne("covision.xml.user.userLogin",cvUserDTO);
+    public CvUserDTO userCheck(CvUserDTO cvUserDTO){
+        return session.selectOne("covision.xml.user.userCheck",cvUserDTO);
     }
 }

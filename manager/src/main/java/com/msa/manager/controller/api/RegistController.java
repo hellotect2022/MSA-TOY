@@ -34,18 +34,9 @@ public class RegistController {
         Response response = new Response();
         //1. 사용자 체크
         log.debug("test",cvUserDTO);
-        CvUserDTO user = cvUserService.userLogin(cvUserDTO);
+        //CvUserDTO user = cvUserService.userLogin(cvUserDTO);
 
-        if (user == null){
-            response.setHeader(RequestStatus.ERROR, ErrorCode.E1004.getErrorCode(),ErrorCode.E1004.getErrorMessage());
-            return response;
-        }
 
-        if (cvUserDTO.getPassword().equals(user.getPassword())){
-            response.setHeader(RequestStatus.ERROR, ErrorCode.E1004.getErrorCode(),ErrorCode.E1004.getErrorMessage());
-        }else{
-            response.setHeader(RequestStatus.ERROR, ErrorCode.E1004.getErrorCode(),ErrorCode.E1004.getErrorMessage());
-        }
 
 
 
